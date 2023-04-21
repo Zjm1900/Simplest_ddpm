@@ -46,6 +46,9 @@ class ConditionalEmbedding(nn.Module):
         super().__init__()
         self.condEmbedding =  nn.Sequential(
             nn.Embedding(num_embeddings=num_labels+1, embedding_dim=d_model, padding_idx=0), # 一个简单的查找表（lookup table），存储固定字典和大小的词嵌入。
+            nn.Linear(d_model, dim),
+            Swish(),
+            nn.Linear(dim, dim)
         )
     
 class DownSample(nn.Module):
