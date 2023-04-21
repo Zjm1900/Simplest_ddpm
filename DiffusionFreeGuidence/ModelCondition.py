@@ -51,6 +51,10 @@ class ConditionalEmbedding(nn.Module):
             nn.Linear(dim, dim)
         )
     
+    def forward(self, t):
+        emb = self.condEmbedding(t)
+        return emb
+    
 class DownSample(nn.Module):
     def __init__(self, in_ch):
         super().__init__()
